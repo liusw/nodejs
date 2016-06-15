@@ -1,0 +1,1 @@
+require(__dirname + "/config/ANS").init(__dirname);

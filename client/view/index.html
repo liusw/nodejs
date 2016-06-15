@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="Nstorm">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title ng-bind="global.subTitle+' | '+global.title">Nstorm - Nodejs MVC FrameWork - NodeJs And AngularJs</title>
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/style/css/site.css" rel="stylesheet" type="text/css">
+    <link href="/style/css/prettify.css" rel="stylesheet" type="text/css">
+    <!--[if lte IE 8]>
+    <script src="/lib/json/json3.js"></script>
+    <script>
+        document.createElement('ng-include');
+        document.createElement('ng-pluralize');
+        document.createElement('ng-view');
+
+        // Optionally these for CSS
+        document.createElement('ng:include');
+        document.createElement('ng:pluralize');
+        document.createElement('ng:view');
+    </script>
+    <![endif]-->
+
+
+    <!--[if lt IE 9]>
+    <script src="/lib/html5/html5shiv.js"></script>
+    <script src="/lib/html5/respond.js"></script>
+    <![endif]-->
+
+    <script>
+        var Nstorm = {
+            version: '0.1.1',
+            root: '/',
+            app: '/lib',
+            view: '/view'
+        };
+    </script>
+    <script src="/lib/jquery/jquery.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/lib/angular/angular.min.js"></script>
+    <script src="/lib/angular/angular-route.min.js"></script>
+    <script src="/lib/angular/angular-resource.min.js"></script>
+    <script src="/lib/common/marked.min.js"></script>
+    <script src="/lib/common/Markdown.Editor.min.js"></script>
+    <script src="/lib/common/prettify.min.js"></script>
+    <script src="/lib/common/sanitize.min.js"></script>
+    <script src="/lib/common/xss.js"></script>
+    <script src="/lib/common/utf8.min.js"></script>
+    <script src="/lib/controllers.js"></script>
+    <script src="/lib/directives.js"></script>
+    <script src="/lib/services.js"></script>
+    <script src="/lib/filters.js"></script>
+    <script src="/lib/tools.js"></script>
+    <script src="/lib/app.js"></script>
+</head>
+<body>
+
+<div class="topBanner">
+    <div class="container">
+    <h3><a href="/" class="logo">ANS FrameWork</a></h3>
+    <p>Angularjs & Nodejs & Seajs Web Framework</p>
+        </div>
+</div>
+
+<div class="navbar navbar-inverse bs-docs-nav" role="banner">
+    <div class="container">
+
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse"><span
+                    class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span></button>
+            <h1><a href="/" class="navbar-brand"></a></h1>
+        </div>
+
+        <nav class="collapse navbar-collapse bs-navbar-collapse clearfix" role="navigation">
+
+            <ul class="nav navbar-nav">
+                <li><a href="/">首页</a></li>
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">NodeJs<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/blog/tags/NodeJs">NodeJs</a></li>
+                        <li><a href="/blog/tags/Nstorm">Nstorm Api</a></li>
+                        <li class="divider"></li>
+                        <li><a href="https://github.com/ckken/ANstormJs" target="_blank">ANS下载</a></li>
+                        <li><a href="https://github.com/ckken" target="_blank">My GitHub</a></li>
+                    </ul>
+                <li>
+                <li><a href="/blog/tags/AngularJS">AngularJS</a></li>
+                <li><a href="/blog/tags/SeaJS">SeaJS</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav pull-right">
+                <li ng-hide="global.isLogin"><a class="btn" href="/login">Login</a></li>
+                <li ng-hide="global.isLogin"><a class="btn" href="/register">Register</a></li>
+                <li class="dropdown avatarBox" ng-show="global.isLogin">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                    <span><img class="hidden-phone"
+                               ng-src="http://www.gravatar.com/avatar/{{global.user.avatar}}?size=38" width="40"
+                               height="40"> </span> {{global.user.name}} <b class="caret hidden-phone"></b> </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/home">用户主页</a></li>
+                        <li><a href="/blog/add">发表文章</a></li>
+                        <li class="divider"></li>
+                        <li><a ng-click="logout()">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </nav>
+    </div>
+
+</div>
+<div class="container">
+    <div class="row">
+        <div ng-view></div>
+    </div>
+</div>
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">ANS nodejs web app frame version 0.4.2 <b>Q.js流程化编程模型</b><br>
+                Power by nodejs + mongodb + angularJs + Nstorm<br>
+                Join us email to ckken@qq.com
+            </div>
+        </div>
+    </div>
+</div>
+<div class="loading" ng-show="global.loading">
+    <div class="progress progress-striped active">
+        <div class="progress-bar" style="width: 100%"></div>
+    </div>
+</div>
+</body>
+</html>
