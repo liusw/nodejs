@@ -2,10 +2,10 @@ var ANS  ={
     init: function (root) {
         this.conf = root + "/config";
         global.C = require(this.conf+'/config').init(root);
-        global.M = {};
+        global.M = {};//邮件  
         M.express = require('express');
         //M.mongoskin = require('mongoskin');//mongo
-        M.nodemailer = require('nodemailer');//邮件
+        M.nodemailer = require('nodemailer');
         global.Q = require('q');//延迟执行
         //global.when = require('when');//延迟执行
         global.F = {};
@@ -21,7 +21,7 @@ var ANS  ={
         //init config
         this.express();
         console.log('the ANS has run on service:'+C.port);
-    },
+    },  
 
     express:function(){
         var app = require(this.conf + '/express').init();
